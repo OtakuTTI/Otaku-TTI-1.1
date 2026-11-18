@@ -20,4 +20,4 @@ python3 generate.py -p "1girl, solo, anime aesthetic" -n 4
 ```
 
 ## License
-MIT License.
+Attribution-NonCommercial 4.0 International License.
