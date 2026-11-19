@@ -8,13 +8,13 @@ from diffusers import UNet2DConditionModel, DDPMScheduler, DPMSolverMultistepSch
 from .text_encoder import CLIPTextEncoder
 from .vae import PretrainedVAE
 
-def build_otaku_diffusion_unet(sample_size: int=32, in_channels: int=4, out_channels: int=4, cross_attention_dim: int=512, block_out_channels: Tuple[int, ...]=(128, 256, 512, 512), attention_head_dim: int=32) -> UNet2DConditionModel:
+def build_otaku_diffusion_unet(sample_size: int=64, in_channels: int=4, out_channels: int=4, cross_attention_dim: int=512, block_out_channels: Tuple[int, ...]=(128, 256, 512, 512), attention_head_dim: int=32) -> UNet2DConditionModel:
     unet = UNet2DConditionModel(sample_size=sample_size, in_channels=in_channels, out_channels=out_channels, layers_per_block=2, block_out_channels=block_out_channels, down_block_types=('DownBlock2D', 'CrossAttnDownBlock2D', 'CrossAttnDownBlock2D', 'CrossAttnDownBlock2D'), up_block_types=('CrossAttnUpBlock2D', 'CrossAttnUpBlock2D', 'CrossAttnUpBlock2D', 'UpBlock2D'), cross_attention_dim=cross_attention_dim, attention_head_dim=attention_head_dim, use_linear_projection=True)
     return unet
 
 class OtakuTTILatentDiffusion(nn.Module):
 
-    def __init__(self, unet: Optional[UNet2DConditionModel]=None, clip_model: str='openai/clip-vit-base-patch32', vae_model: str='stabilityai/sd-vae-ft-mse', image_size: int=256, device: Union[str, torch.device]='cuda' if torch.cuda.is_available() else 'cpu', dtype: torch.dtype=torch.bfloat16):
+    def __init__(self, unet: Optional[UNet2DConditionModel]=None, clip_model: str='openai/clip-vit-base-patch32', vae_model: str='stabilityai/sd-vae-ft-mse', image_size: int=512, device: Union[str, torch.device]='cuda' if torch.cuda.is_available() else 'cpu', dtype: torch.dtype=torch.bfloat16):
         super().__init__()
         self.device = torch.device(device)
         self.dtype = dtype
