@@ -1,5 +1,8 @@
 # Otaku TTI 1.1
 
+<img width="520" height="520" alt="strong_warrior" src="https://github.com/user-attachments/assets/ace771d4-4fdc-4d2c-b3f3-41e0cee85a0e" />
+
+
 **A lightweight native 512×512 anime text-to-image latent diffusion engine.**
 
 Otaku TTI 1.1 brings native 512×512 anime generation to consumer hardware, thin laptops, and edge devices. Trained end-to-end under a strict 60W power budget on an Acer Nitro V 15 (NVIDIA GeForce RTX 4050 Laptop GPU, 6GB VRAM), Otaku TTI proves that expressive, high-resolution generative AI can be developed sustainably without mega-datacenter clusters.
